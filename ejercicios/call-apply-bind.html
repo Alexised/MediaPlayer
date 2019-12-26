@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>MediaPlayer.js</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+
+</head>
+
+<body>
+<a href="/ejercicios/">Go back </a>
+<p><em>Abre la consola</em></p>
+
+    <ul>
+        <li><button class="call-to-action">Aprender</button></li>
+        <li><button class="call-to-action">Aprender Mas</button></li>
+        <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+    </ul>
+    <script>
+        // Establece this usando call
+        function saludar() {
+            console.log(`hola . soy ${this.name} ${this.apellido}`);
+            }
+        const  alexis = {
+            name: 'alexis',
+            apellido:'rod'
+        }
+        saludar.call(alexis)
+         // Establece this usando call y pasar argumentos a la funcion
+        function caminar(metros, direccion){
+            console.log(` ${this.name} camina ${metros} metros hacia ${direccion}`);
+        }
+        caminar.call(alexis,400, 'norte')
+
+        // Establece this usando apply y pasar argumentos a la funcion 
+        const valores =[800,'noreste'];
+        caminar.apply(alexis,valores);
+
+        /*
+        call- comma
+        apply - arreglo -
+        */
+        // Establece this en una nueva funcion usando bind 
+        const daniel = {name:'daniel',apellido:'sanchez'}
+        const danielSaluda =saludar.bind(daniel);
+        danielSaluda();
+
+        const danielCamina = caminar.bind(daniel , 2000 ,'sur')
+        danielCamina() 
+        // Cuando es util usar uno de estos metodos
+        const buttons = document.getElementsByClassName('call-to-action');
+        // buttons.forEach(button =>{
+        //     button.onclick=()=> alert('nuca pares de aprender');
+        // });
+        Array.prototype.forEach.call(buttons,button =>{
+            button.onclick=()=> alert('nuca pares de aprender');
+        });
+    </script>
+</body>
+
+</html>

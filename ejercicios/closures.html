@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>MediaPlayer.js</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+
+</head>
+
+<body>
+<a href="/ejercicios/">Go back </a>
+<p><em>Abre la consola</em></p>
+    <script>
+    //clousures 
+    // printColor
+    (function(){
+    let color = 'green';
+    function printColor(){
+        console.log(color);
+    }
+    printColor();
+})();
+
+// function que regresan funciones
+function makeColorPrinter(color){
+    let colorMessage = `the color is ${color}`;
+    return function(){
+        console.log(colorMessage);
+    }
+}
+let greenColorPrinter = makeColorPrinter("green");
+console.log(greenColorPrinter())
+//varibles privadas
+function makeConter(n){
+    let count =n ;
+    return {
+        increase: function(){
+            count =count + 1;
+        },
+        decrease: function(){
+            count =count - 1;
+
+        },
+        getCount: function(){
+            return count;
+        },
+    }
+}
+
+let counter = makeConter(7);
+
+console.log(counter.getCount());
+console.log(counter.increase());
+console.log(counter.getCount());
+console.log(counter.decrease());
+console.log(counter.getCount());
+
+
+
+</script>
+</body>
+
+</html>

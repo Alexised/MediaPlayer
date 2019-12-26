@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>MediaPlayer.js</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+</head>
+
+<body>
+    <a href="/ejercicios/">Go back </a>
+    <p><em>Abre la consola</em></p>
+    <script>
+        // this en el scope global
+        console.log(`this:${this}`);
+
+        function whoIsThis() {
+            return this;
+        }
+        console.log(`this:${whoIsThis()}`);
+
+        //this en el scopre de una funcion en strict mode 
+
+        function whoIsThisStrict() {
+            'use strict';
+
+            return this;
+        }
+        console.log(`this:${whoIsThisStrict()}`);
+
+        //this en el contexto de objeto 
+        const person = {
+            name: 'alex',
+            saludar: function () {
+                console.log(`Hola soy ${this.name}`);
+
+            }
+        }
+        person.saludar();
+
+        //this cuando sacams a una funcion de un objeto
+        const accion = person.saludar;
+        accion();
+        //this en el contexto de una clase 
+        function Person(name) {
+            this.name = name;
+
+        }
+        Person.prototype.saludar = function () {
+            console.log(`Hola me llamo ${this.name}`);
+
+        }
+
+        const angela = new Person("Angela")
+        angela.saludar();
+    </script>
+</body>
+
+</html>
